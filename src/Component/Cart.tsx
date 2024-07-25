@@ -32,9 +32,9 @@ function Cart({ products, setProducts }: CartProps) {
             <table>
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
                         <th>Total</th>
                     </tr>
                 </thead>
