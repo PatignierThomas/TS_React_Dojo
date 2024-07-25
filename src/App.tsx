@@ -3,7 +3,6 @@ import './App.css'
 import Cart from './Component/Cart'
 
 function App() {
-
     const [initialProductList, SetInitialProductList] = useState(    
         [
         { id: 1, name: 'produit 1', price: 50, quantity: 1 },

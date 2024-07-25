@@ -13,7 +13,7 @@ export interface CartProps {
 }
 
 function Cart({ products, setProducts }: CartProps) {
-    const hanbleQuantityChange = (id: number, quantity: number) => {
+    const handleQuantityChange = (id: number, quantity: number) => {
         if (quantity === 0) {
             window.confirm('Voulez-vous supprimer ce produit ?') 
             && setProducts((prevProduct) => prevProduct.filter((product) => product.id !== id))
@@ -47,7 +47,7 @@ function Cart({ products, setProducts }: CartProps) {
                                 <input 
                                     type="number" 
                                     value={product.quantity} 
-                                    onChange={(e) => {hanbleQuantityChange(product.id, Number(e.target.value))}}
+                                    onChange={(e) => {handleQuantityChange(product.id, Number(e.target.value))}}
                                 />
                             </td>
                             <td>{product.price * product.quantity}</td>
