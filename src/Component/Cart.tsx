@@ -8,17 +8,17 @@ export interface Product {
 }
 
 export interface CartProps {
-    product: Product[];
-    setProduct: React.Dispatch<React.SetStateAction<Product[]>>;
+    products: Product[];
+    setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
-function Cart({ product, setProduct }: CartProps) {
+function Cart({ products, setProducts }: CartProps) {
     const hanbleQuantityChange = (id: number, quantity: number) => {
         if (quantity === 0) {
             window.confirm('Voulez-vous supprimer ce produit ?') 
-            && setProduct((prevProduct) => prevProduct.filter((product) => product.id !== id))
+            && setProducts((prevProduct) => prevProduct.filter((product) => product.id !== id))
         } else {
-            setProduct((prevProduct) => 
+            setProducts((prevProduct) => 
                 prevProduct.map((product) => 
                     product.id === id ? { ...product, quantity: Number(quantity) } : product
                 )
@@ -39,7 +39,7 @@ function Cart({ product, setProduct }: CartProps) {
                     </tr>
                 </thead>
                 <tbody>
-                    {product.map((product) => (
+                    {products.map((product) => (
                         <tr key={product.id}>
                             <td>{product.name}</td>
                             <td>{product.price}</td>
@@ -58,11 +58,11 @@ function Cart({ product, setProduct }: CartProps) {
             <div>
                 <h2 className="total">Montant total de la commande : </h2>
                 <p>
-                    {product.reduce((total, product) => total + product.price * product.quantity, 0)} €
+                    {products.reduce((total, product) => total + product.price * product.quantity, 0)} €
                 </p>
             </div>
         </div>
-        <AddToCart setProduct={setProduct} />
+        <AddToCart setProducts={setProducts} />
   </div>
   )
 }

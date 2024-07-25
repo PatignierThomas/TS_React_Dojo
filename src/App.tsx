@@ -14,7 +14,7 @@ function App() {
     <>
         <div className='App'>
             <h1>Ma commande</h1>
-            <Cart product={initialProductList} setProduct={SetInitialProductList}/>
+            <Cart products={initialProductList} setProducts={SetInitialProductList}/>
         </div>
     </>
   )
