@@ -1,4 +1,5 @@
 import AddToCart from "./AddToCart";
+import ProductTable from "./ProductTable";
 
 export interface Product {
     id: number;
@@ -13,48 +14,11 @@ export interface CartProps {
 }
 
 function Cart({ products, setProducts }: CartProps) {
-    const handleQuantityChange = (id: number, quantity: number) => {
-        if (quantity === 0) {
-            window.confirm('Voulez-vous supprimer ce produit ?') 
-            && setProducts((prevProduct) => prevProduct.filter((product) => product.id !== id))
-        } else {
-            setProducts((prevProduct) => 
-                prevProduct.map((product) => 
-                    product.id === id ? { ...product, quantity: Number(quantity) } : product
-                )
-            )
-        }
-    }
   return (
     <div>
         <h1>Mon panier</h1>
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Produit</th>
-                        <th>Prix</th>
-                        <th>Quantité</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map((product) => (
-                        <tr key={product.id}>
-                            <td>{product.name}</td>
-                            <td>{product.price}</td>
-                            <td>
-                                <input 
-                                    type="number" 
-                                    value={product.quantity} 
-                                    onChange={(e) => {handleQuantityChange(product.id, Number(e.target.value))}}
-                                />
-                            </td>
-                            <td>{product.price * product.quantity}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <ProductTable products={products} setProducts={setProducts}/>
             <div>
                 <h2 className="total">Montant total de la commande : </h2>
                 <p>
