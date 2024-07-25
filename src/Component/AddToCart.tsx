@@ -1,8 +1,9 @@
 import React from 'react'
+import { useState } from 'react'
 import { CartProps, Product } from './Cart.tsx'
 
 function AddToCart({setProducts}: Pick<CartProps, "setProducts">) {
-    const [error, setError] = React.useState<string | null>(null)
+    const [error, setError] = useState<string | null>(null)
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
